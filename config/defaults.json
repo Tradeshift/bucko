@@ -1,0 +1,47 @@
+{
+	"host": {
+		"tradeshift": "api-sandbox.tradeshift.com"
+	},
+	"manifest": {
+		"config": {
+			"externalurl": "true"
+		},
+		"default_locale": "en-US",
+		"icons": {
+			"24": "icon-24.png",
+			"48": "icon-48.png",
+			"128": "icon-128.png"
+		},
+		"manifest_version": "3.0",
+		"permissions": {
+			"document_create": false,
+			"document_delete": false,
+			"document_send": false,
+			"document_tag": false,
+			"document_view": false,
+			"group_edit": false,
+			"group_view": false,
+			"network_create": false,
+			"network_delete": false,
+			"network_view": false,
+			"openidconnect": true
+		},
+		"tradeshift_version": "5.0",
+		"version": "0.0.0"
+	},
+	"path": {
+		"app": {
+			"authCallback": "/auth/callback",
+			"main": "/"
+		},
+		"tradeshift": {
+			"auth": {
+				"login": "/tradeshift/auth/login",
+				"token": "/tradeshift/auth/token"
+			}
+		}
+	},
+	"uiComponents": {
+		"version": "3.3.3"
+	}
+}

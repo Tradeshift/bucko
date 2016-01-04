@@ -1,0 +1,19 @@
+main {
+	padding: 22px;
+}
+.column {
+	width: 330px;
+}
+.section {
+	display: none;
+}
+.sidebar {
+	width: 330px;
+}
+.main {
+	position: absolute;
+	right: 0;
+	top: 22px;
+	/* sidebar width plus some space */
+	width: calc(100% - 330px - 66px);
+}

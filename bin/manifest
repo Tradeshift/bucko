@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+var Configuration = require('../src/lib/Configuration');
+var manifest = require('../src/lib/Manifest');
+var path = require('path');
+
+var config = Configuration.load(path.resolve(__dirname, '../config'));
+var fileName = manifest.build(config);
+
+console.log('Manifest saved to', fileName);
