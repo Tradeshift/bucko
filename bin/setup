@@ -1,0 +1,17 @@
+#!/bin/bash
+npm install
+
+if [ ! -d `pwd`/.git/hooks ]; then
+	mkdir -p `pwd`/.git/hooks
+fi
+
+if [ ! -f `pwd`/.git/hooks/pre-commit ]; then
+	ln -s `pwd`/git-hooks/pre-commit `pwd`/.git/hooks
+fi
+
+if [ ! -f `pwd`/config/oauth.json ]; then
+	echo -e "{\n\t\"oauth\": {\n\t\t\"secret\": \"[Enter your OAuth secret]\"\n\t}\n}" > `pwd`/config/oauth.json;
+	echo -e "\nContact Tradeshift to request an OAuth secret for your app."
+fi
+
+echo -e "\nEdit 'config/local.json' then run './bin/manifest' to build the app manifest."

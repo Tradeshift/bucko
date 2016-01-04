@@ -1,0 +1,23 @@
+<div class="column">
+	<h3>You are authenticated!</h3>
+	<form ts-form>
+		<fieldset>
+			<label>
+				<span>Username</span>
+				<input type="text" disabled="disabled" value="{{ auth.username }}" />
+			</label>
+		</fieldset>
+		<fieldset>
+			<label>
+				<span>UserId</span>
+				<input type="text" disabled="disabled" value="{{ auth.userId }}" />
+			</label>
+		</fieldset>
+		<fieldset>
+			<label>
+				<span>CompanyId</span>
+				<input type="text" disabled="disabled" value="{{ auth.companyId }}" />
+			</label>
+		</fieldset>
+	</form>
+</div>
