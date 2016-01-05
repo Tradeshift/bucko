@@ -1,60 +1,22 @@
 #!/usr/bin/env node
-var _ = require('LoDash');
-var app = require('../src/server');
-var debug = require('debug')('server');
 var http = require('http');
 
-// get port from environment and store in
-var port = normalizePort(process.env.PORT || '1337');
+var app = require('../src/server');
+
+// set host and port for server
 var host = '0.0.0.0';
+var port = parseInt(process.env.PORT || '1337', 10);
 app.set('port', port);
 
 // create http server
 var server = http.createServer(app);
 
-// listen on provided port, on all network interfaces
-server.listen(port, host);
-server.on('error', onError);
-server.on('listening', onListening);
+// listen on provided host and port
+server.listen(port, host, function() {
+	console.log('Listening on port', [host, ':', port].join(''));
+});
 
-// normalize a port into a number, string or false
-function normalizePort(value) {
-	var port = _.parseInt(value, 10);
-	if (_.isNaN(port)) {
-		// named pipe
-		return value;
-	} else {
-		// port number or invalid value
-		return port >= 0 ? port : false;
-	}
-}
-
-// event listener for http server listening events
-function onListening() {
-  var address = server.address();
-  // TODO: add host here - var host = server.address().address;
-  var bind = _.isString(address) ? ['pipe', address] : ['port ', address.port];
-  debug('Listening on ' + bind.join(' '));
-}
-
-// event listener for http server error events
-function onError(error) {
-	if (error.syscall !== 'listen') {
-		throw error;
-	}
-
-	// handle specific listen errors with friendly messages
-	var bind = _.isString(port) ? ['Pipe', port] : ['Port', port];
-	switch (error.code) {
-		case 'EACCES':
-			console.error(bind.join(' ') + ' requires elevated privileges');
-			process.exit(1);
-			break;
-		case 'EADDRINUSE':
-			console.error(bind.join(' ') + ' is already in use');
-			process.exit(1);
-			break;
-		default:
-			throw error;
-	}
-}
+// should have caught that...
+process.on('uncaughtException', function(error) {
+	console.log('Uncaught exception:', error, error.stack);
+});
