@@ -3,6 +3,7 @@
 		"app": "a272fd4f.ngrok.io",
 		"tradeshift": "api-fs-sandbox.tradeshift.com"
 	},
+	"local": true,
 	"manifest": {
 		"app_desc": "A simple Tradeshift app that demonstrates making API calls using OAuth2",
 		"app_id": "AlphaApp",

@@ -7,6 +7,10 @@ function Configuration(data) {
 }
 
 Configuration.prototype = {
+	isLocalDevelopment: function() {
+		return this._data.local;
+	},
+
 	getTradeshiftHost: function() {
 		return this._data.host.tradeshift;
 	},

@@ -2,6 +2,7 @@
 	"host": {
 		"tradeshift": "api-sandbox.tradeshift.com"
 	},
+	"local": false,
 	"manifest": {
 		"config": {
 			"externalurl": "true"
