@@ -1,0 +1,201 @@
+[{
+	"companyId": "5d1c0771-f3f5-4ea8-8313-7aa57992b880",
+	"companyName": "InnoZ",
+	"lastPurchase": "2015-08-30",
+	"isReminded": true
+}, {
+	"companyId": "fe2bfd96-acd3-4726-bcab-cf9c7cccd8b3",
+	"companyName": "Wikizz",
+	"lastPurchase": "2015-04-02",
+	"isReminded": true
+}, {
+	"companyId": "6b7e8f5f-b742-4eb5-8305-30f45fa23075",
+	"companyName": "Eabox",
+	"lastPurchase": "2015-06-03",
+	"isReminded": false
+}, {
+	"companyId": "28cdcea7-acc2-4ebb-b489-53de5b7ddd39",
+	"companyName": "Babbleopia",
+	"lastPurchase": "2014-09-16",
+	"isReminded": true
+}, {
+	"companyId": "ab3ffe6f-cae6-4f89-89c5-e3d506014a12",
+	"companyName": "Flashset",
+	"lastPurchase": "2015-09-27",
+	"isReminded": true
+}, {
+	"companyId": "b5050631-f496-459d-b30b-62211a5f6de2",
+	"companyName": "Wikizz",
+	"lastPurchase": "2015-03-07",
+	"isReminded": false
+}, {
+	"companyId": "ede0b462-0409-4741-ad9a-8cb109e8a4c2",
+	"companyName": "Rhycero",
+	"lastPurchase": "2014-12-30",
+	"isReminded": true
+}, {
+	"companyId": "828daff6-83cc-4f7a-99e5-1f9872c4b788",
+	"companyName": "Oyoba",
+	"lastPurchase": "2015-07-25",
+	"isReminded": false
+}, {
+	"companyId": "18cd0f6d-f9ca-4834-ade2-c63e7c41d7bf",
+	"companyName": "Babbleopia",
+	"lastPurchase": "2014-10-28",
+	"isReminded": false
+}, {
+	"companyId": "9f5fbe2a-0be1-41af-a40c-af1267c8f028",
+	"companyName": "Oyoba",
+	"lastPurchase": "2015-02-25",
+	"isReminded": true
+}, {
+	"companyId": "33a18f16-70d4-454d-bcb0-f065bbdc4236",
+	"companyName": "Babbleopia",
+	"lastPurchase": "2015-09-16",
+	"isReminded": true
+}, {
+	"companyId": "34dfbf0a-ce28-4ef1-ad3e-e500c1bf54ca",
+	"companyName": "Pixonyx",
+	"lastPurchase": "2015-04-16",
+	"isReminded": true
+}, {
+	"companyId": "599e181d-9078-4871-9b2d-0f24a8c5359d",
+	"companyName": "Oyoba",
+	"lastPurchase": "2015-01-13",
+	"isReminded": false
+}, {
+	"companyId": "4c4cf005-ef67-4c06-a068-b821b0379d7d",
+	"companyName": "Wikizz",
+	"lastPurchase": "2015-06-12",
+	"isReminded": true
+}, {
+	"companyId": "7ea062b3-c6b6-4556-8fd0-97322d1975f7",
+	"companyName": "Flashset",
+	"lastPurchase": "2014-10-24",
+	"isReminded": false
+}, {
+	"companyId": "df8b0404-7923-49ea-8f56-15d0906a6d18",
+	"companyName": "InnoZ",
+	"lastPurchase": "2015-07-04",
+	"isReminded": true
+}, {
+	"companyId": "09a914a0-96cd-4d9f-8243-bf108e6ac6ed",
+	"companyName": "Babblestorm",
+	"lastPurchase": "2015-06-22",
+	"isReminded": false
+}, {
+	"companyId": "96d28ddd-ef18-4835-aca0-349e455154d1",
+	"companyName": "InnoZ",
+	"lastPurchase": "2015-08-14",
+	"isReminded": true
+}, {
+	"companyId": "318ccad6-98d9-4ef2-985f-2e9c5bc3cbc0",
+	"companyName": "Mudo",
+	"lastPurchase": "2015-10-02",
+	"isReminded": true
+}, {
+	"companyId": "31ece22a-da6b-4722-9ddc-d459818b04e4",
+	"companyName": "Zazio",
+	"lastPurchase": "2015-02-03",
+	"isReminded": false
+}, {
+	"companyId": "5d1c0771-f3f5-4ea8-8313-7aa57992b880",
+	"companyName": "Centimia",
+	"lastPurchase": "2015-08-30",
+	"isReminded": true
+}, {
+	"companyId": "fe2bfd96-acd3-4726-bcab-cf9c7cccd8b3",
+	"companyName": "Flashset",
+	"lastPurchase": "2015-04-02",
+	"isReminded": true
+}, {
+	"companyId": "6b7e8f5f-b742-4eb5-8305-30f45fa23075",
+	"companyName": "Wikizz",
+	"lastPurchase": "2015-06-03",
+	"isReminded": false
+}, {
+	"companyId": "28cdcea7-acc2-4ebb-b489-53de5b7ddd39",
+	"companyName": "Babbleopia",
+	"lastPurchase": "2014-09-16",
+	"isReminded": true
+}, {
+	"companyId": "ab3ffe6f-cae6-4f89-89c5-e3d506014a12",
+	"companyName": "Babbleopia",
+	"lastPurchase": "2015-09-27",
+	"isReminded": true
+}, {
+	"companyId": "b5050631-f496-459d-b30b-62211a5f6de2",
+	"companyName": "Oyondu",
+	"lastPurchase": "2015-03-07",
+	"isReminded": false
+}, {
+	"companyId": "ede0b462-0409-4741-ad9a-8cb109e8a4c2",
+	"companyName": "Wikizz",
+	"lastPurchase": "2014-12-30",
+	"isReminded": true
+}, {
+	"companyId": "828daff6-83cc-4f7a-99e5-1f9872c4b788",
+	"companyName": "Zoozzy",
+	"lastPurchase": "2015-07-25",
+	"isReminded": false
+}, {
+	"companyId": "18cd0f6d-f9ca-4834-ade2-c63e7c41d7bf",
+	"companyName": "Flashset",
+	"lastPurchase": "2014-10-28",
+	"isReminded": false
+}, {
+	"companyId": "9f5fbe2a-0be1-41af-a40c-af1267c8f028",
+	"companyName": "Oyoba",
+	"lastPurchase": "2015-02-25",
+	"isReminded": true
+}, {
+	"companyId": "33a18f16-70d4-454d-bcb0-f065bbdc4236",
+	"companyName": "Demivee",
+	"lastPurchase": "2015-09-16",
+	"isReminded": true
+}, {
+	"companyId": "34dfbf0a-ce28-4ef1-ad3e-e500c1bf54ca",
+	"companyName": "Flashset",
+	"lastPurchase": "2015-04-16",
+	"isReminded": true
+}, {
+	"companyId": "599e181d-9078-4871-9b2d-0f24a8c5359d",
+	"companyName": "Kanoodle",
+	"lastPurchase": "2015-01-13",
+	"isReminded": false
+}, {
+	"companyId": "4c4cf005-ef67-4c06-a068-b821b0379d7d",
+	"companyName": "Wikizz",
+	"lastPurchase": "2015-06-12",
+	"isReminded": true
+}, {
+	"companyId": "7ea062b3-c6b6-4556-8fd0-97322d1975f7",
+	"companyName": "Flashset",
+	"lastPurchase": "2014-10-24",
+	"isReminded": false
+}, {
+	"companyId": "df8b0404-7923-49ea-8f56-15d0906a6d18",
+	"companyName": "InnoZ",
+	"lastPurchase": "2015-07-04",
+	"isReminded": true
+}, {
+	"companyId": "09a914a0-96cd-4d9f-8243-bf108e6ac6ed",
+	"companyName": "Babblestorm",
+	"lastPurchase": "2015-06-22",
+	"isReminded": false
+}, {
+	"companyId": "96d28ddd-ef18-4835-aca0-349e455154d1",
+	"companyName": "Realmix",
+	"lastPurchase": "2015-08-14",
+	"isReminded": true
+}, {
+	"companyId": "318ccad6-98d9-4ef2-985f-2e9c5bc3cbc0",
+	"companyName": "Wikizz",
+	"lastPurchase": "2015-10-02",
+	"isReminded": true
+}, {
+	"companyId": "31ece22a-da6b-4722-9ddc-d459818b04e4",
+	"companyName": "Zazio",
+	"lastPurchase": "2015-02-03",
+	"isReminded": false
+}]
