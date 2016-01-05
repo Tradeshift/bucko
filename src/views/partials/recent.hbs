@@ -1,0 +1,5 @@
+<h1>Recent</h1>
+{{#each documents}}
+	<div>{{documentId}} - {{documentNumber}} - {{companyName}} - {{amount}}</div>
+	<button onclick="recent.thank('{{documentId}}', '{{documentNumber}}')">Thank you!</button>
+{{/each}}

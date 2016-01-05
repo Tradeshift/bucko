@@ -1,4 +1,4 @@
-var _ = require('LoDash');
+var _ = require('lodash');
 var fs = require('fs-extra');
 var mime = require('mime');
 var path = require('path');

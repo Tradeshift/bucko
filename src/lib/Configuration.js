@@ -1,4 +1,4 @@
-var _ = require('LoDash');
+var _ = require('lodash');
 var fs = require('fs');
 var path = require('path');
 
@@ -7,6 +7,10 @@ function Configuration(data) {
 }
 
 Configuration.prototype = {
+	isLocalDevelopment: function() {
+		return this._data.local;
+	},
+
 	getTradeshiftHost: function() {
 		return this._data.host.tradeshift;
 	},

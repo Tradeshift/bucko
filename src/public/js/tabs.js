@@ -1,12 +1,21 @@
 (function() {
 	var SECTION_AUTHENTICATION = 'authentication';
 	var SECTION_BUCKO = 'bucko';
+	var SECTION_ENGAGE = 'engage';
+	var SECTION_RECENT = 'recent';
 	var SECTION_TRADESHIFT_API = 'tradeshift-api';
 
+	var sectionKeys = [
+		SECTION_AUTHENTICATION,
+		SECTION_BUCKO,
+		SECTION_ENGAGE,
+		SECTION_RECENT,
+		SECTION_TRADESHIFT_API,
+	];
 	var sections = {};
-	sections[SECTION_AUTHENTICATION] = document.getElementById('js-section-authentication');
-	sections[SECTION_BUCKO] = document.getElementById('js-section-bucko');
-	sections[SECTION_TRADESHIFT_API] = document.getElementById('js-section-tradeshift-api');
+	sectionKeys.forEach(function(key) {
+		sections[key] = document.getElementById(['js-section-', key].join(''));
+	});
 
 	function showSection(selected) {
 		Object.keys(sections).forEach(function(key) {
@@ -15,6 +24,22 @@
 	}
 
 	ts.ui.TopBar.tabs([
+		{
+			label: 'Recent',
+			onselect: function() {
+				console.log('initing from recent tab');
+				document.recent.init();
+				showSection(SECTION_RECENT);
+			}
+		},
+		{
+			label: 'Engage',
+			onselect: function() {
+				console.log('initing from engage tab');
+				document.engage.init();
+				showSection(SECTION_ENGAGE);
+			}
+		},
 		{
 			label: 'Bucko',
 			onselect: function() {
@@ -34,4 +59,4 @@
 			}
 		}
 	]);
-})();
+})(document);
