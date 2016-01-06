@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var express = require('express');
 var Q = require('q');
+var url = require('url');
 
 var TradeshiftAPIClient = require('../services/TradeshiftAPIClient');
 
@@ -37,7 +38,13 @@ router.get('/', function(request, response) {
 			},
 			customers: customers,
 			documents: docs,
-			globals: JSON.stringify(config.getGlobals()),
+			globals: JSON.stringify({
+				host: url.format({
+					protocol: request.protocol,
+					hostname: request.hostname,
+					port: request.app.get('port'),
+				}),
+			}),
 		});
 	});
 });
