@@ -1,36 +1,45 @@
 var _ = require('lodash');
 var express = require('express');
+var Q = require('q');
 
-var tradeshift = require('../services/TradeshiftAPIClient');
+var TradeshiftAPIClient = require('../services/TradeshiftAPIClient');
 
 var config = require('../config').get();
 var router = express.Router();
 
 router.get('/', function(request, response) {
-	if (config.isLocalDevelopment()) {
-		response.status(200).render('sections', {
-			auth: {
-				username: 'Me!',
-				companyId: 'fakeCompanyId',
-				userId: 'fakeUserId',
-			},
-			customers: tradeshift.getCustomers(),
-			documents: tradeshift.getRecentPaidInvoices(),
-		});
+	var isLocal = config.isLocalDevelopment();
+	var isAuthenticated = !_.isEmpty(request.session.auth);
+
+	if (!isAuthenticated && !isLocal) {
+		response.redirect('/auth/token');
 		return;
+	} else {
+		request.session.auth = {
+			accessToken: 'fakeAccessToken',
+			companyId: 'fakeCompanyId',
+			userId: 'fakeUserId',
+			username: 'me!',
+		};
 	}
 
-	if (_.isEmpty(request.session.auth)) {
-		response.redirect('/auth/token');
-	} else {
+	var ts = new TradeshiftAPIClient(request.session.auth.accessToken);
+
+	Q.all([
+		ts.getRecentPaidInvoices(isLocal),
+		ts.getCustomers(isLocal),
+	]).spread(function(docs, customers) {
 		response.status(200).render('sections', {
 			auth: {
 				companyId: request.session.auth.companyId,
 				userId: request.session.auth.userId,
 				username: request.session.auth.username,
 			},
+			customers: customers,
+			documents: docs,
+			globals: JSON.stringify(config.getGlobals()),
 		});
-	}
+	});
 });
 
 module.exports = router;

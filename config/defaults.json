@@ -39,8 +39,12 @@
 			"auth": {
 				"login": "/tradeshift/auth/login",
 				"token": "/tradeshift/auth/token"
-			}
+			},
+			"api": "/tradeshift/rest/external"
 		}
+	},
+	"port": {
+		"app": "1337"
 	},
 	"uiComponents": {
 		"version": "3.3.3"

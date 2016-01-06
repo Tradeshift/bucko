@@ -3,7 +3,6 @@ var https = require('https');
 var Q = require('q');
 
 var config = require('../config').get();
-
 var router = express.Router();
 
 function getToken(request, response) {

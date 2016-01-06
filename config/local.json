@@ -1,18 +1,25 @@
 {
 	"host": {
-		"app": "a272fd4f.ngrok.io",
+		"app": "aaa0e790.ngrok.io",
 		"tradeshift": "api-fs-sandbox.tradeshift.com"
 	},
-	"local": true,
+	"local": false,
 	"manifest": {
 		"app_desc": "A simple Tradeshift app that demonstrates making API calls using OAuth2",
 		"app_id": "AlphaApp",
 		"app_name": "Alpha App",
 		"permissions": {
+			"document_create": true,
+			"document_send": true,
+			"document_tag": true,
 			"document_view": true,
-			"group_view": true
+			"group_edit": true,
+			"group_view": true,
+			"network_create": true,
+			"network_view": true,
+			"openidconnect": true
 		},
 		"vendor_id": "Developer",
-		"version": "0.0.5"
+		"version": "0.0.7"
 	}
 }
