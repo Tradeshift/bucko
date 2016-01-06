@@ -78,8 +78,11 @@ Configuration.load = function(rootPath) {
 	var config = {};
 	var files = ['defaults', 'local', 'oauth'];
 	_.forEach(files, function(value, key) {
+		var data;
 		var file = path.resolve(rootPath, [value, '.json'].join(''));
-		var data = fs.readJsonSync(file, {throws: false});
+		if (fs.existsSync(file)) {
+			data = fs.readJsonSync(file, {throws: false});
+		}
 		if (data) {
 			_.merge(config, data);
 		}
