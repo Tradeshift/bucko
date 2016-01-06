@@ -1,12 +1,12 @@
 /*global Q*/
-(function() {
+(function(document) {
 	var resultArea = document.getElementById('js-api-results');
+	var host = document.globals.host;
 
 	function _request(method, path, body) {
-		var host = 'http://localhost:1337/';
 		return Q.Promise(function(resolve, reject) {
 			var xhr = new XMLHttpRequest();
-			xhr.open(method, encodeURI([host, path].join('')), true);
+			xhr.open(method, encodeURI([host, path].join('/')), true);
 			xhr.setRequestHeader('Content-Type', 'application/json');
 			xhr.setRequestHeader('Accept', 'application/json');
 			xhr.onload = function() {
@@ -23,7 +23,7 @@
 
 	function getAccountInfo() {
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET', encodeURI('https://a272fd4f.ngrok.io/ts/info'), true);
+		xhr.open('GET', encodeURI([host, 'ts/info'].join('/')), true);
 		xhr.onload = function() {
 			if (xhr.status === 200) {
 				console.log('Response is', xhr.responseText);

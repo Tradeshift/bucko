@@ -1,14 +1,13 @@
-/*global tradeshift*/
-(function() {
+(function(document) {
 	var recent = {
 		init: function() {
 			console.log('initing');
 			console.log('data', document.data);
 		},
-		thank: function(documentId, documentNumber) {
+		thank: function(documentId, businessId) {
 			var message = 'thank you so much!';
 			console.log('sending thanks to document', documentId);
-			document.tradeshift.thank(documentId, documentNumber, message).then(function(response) {
+			document.tradeshift.thank(documentId, businessId, message).then(function(response) {
 				console.log('you are welcome');
 			});
 		},

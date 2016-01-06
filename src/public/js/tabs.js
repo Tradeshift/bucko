@@ -1,4 +1,4 @@
-(function() {
+(function(document) {
 	var SECTION_AUTHENTICATION = 'authentication';
 	var SECTION_BUCKO = 'bucko';
 	var SECTION_ENGAGE = 'engage';

@@ -1,17 +1,32 @@
 var express = require('express');
 
-var tradeshift = require('../services/TradeshiftAPIClient');
+var TradeshiftAPIClient = require('../services/TradeshiftAPIClient');
 
 var router = express.Router();
 
-router.post('/document/:documentId/thank', function(request, response) {
-	var documentId = request.params.documentId;
+router.post('/document/:documentReferenceId/thank', function(request, response) {
+	var documentReferenceId = request.params.documentReferenceId;
 	var documentReferenceNumber = request.body.businessId;
 	var message = request.body.message;
-	// post comment
-	// add document tag
-	console.log('thanking', documentId, documentReferenceNumber, message);
-	response.status(200).end();
+
+	console.log('thanking', documentReferenceId, documentReferenceNumber, message);
+
+	var ts = new TradeshiftAPIClient(request.session.auth.accessToken);
+	ts.addCommentToDocument({
+		documentReferenceId: documentReferenceId,
+		documentReferenceNumber: documentReferenceNumber,
+		message: message,
+	}).then(function(result) {
+		return ts.addTagToDocument({
+			documentId: documentReferenceId,
+			tag: 'loyalty',
+		});
+	}).then(function(result) {
+		response.status(200).send(result);
+	}).catch(function(error) {
+		console.log('error is', error);
+		response.status(500).send(error);
+	}).done();
 });
 
 router.post('/document/:documentId/dismiss', function(request, response) {
@@ -22,8 +37,10 @@ router.post('/document/:documentId/dismiss', function(request, response) {
 });
 
 router.get('/customers', function(request, response) {
-	var data = tradeshift.getCustomers();
-	response.status(200).send(data);
+	var ts = new TradeshiftAPIClient(request.session.auth.accessToken);
+	ts.getCustomerCounts().then(function(data) {
+		response.status(200).send(data);
+	});
 });
 
 module.exports = router;

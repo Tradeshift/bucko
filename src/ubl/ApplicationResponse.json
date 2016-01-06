@@ -1,0 +1,50 @@
+{
+	"DocumentType": "ApplicationResponseType",
+	"ID": {
+		"value": "{documentId}"
+	},
+	"DocumentResponse": [{
+		"Response": {
+			"ResponseCode": {
+				"value": "{responseCode}"
+			},
+			"ReferenceID": {
+				"value": "1"
+			},
+			"Description": [{
+				"value": "{message}"
+			}]
+		},
+		"DocumentReference": {
+			"UUID": {
+				"value": "{documentReferenceId}"
+			},
+			"ID": {
+				"value": "{documentReferenceNumber}"
+			}
+		}
+	}],
+	"CustomizationID": {
+		"value": "urn:tradeshift.com:ubl-2.0-customizations:2010-06"
+	},
+	"ProfileID": {
+		"value": "urn:www.cenbii.eu:profile:bii04:ver1.0"
+	},
+	"IssueDate": {
+		"value": "{issueDate}"
+	},
+	"SenderParty": {
+		"Contact": {
+			"Note": {
+				"value": ""
+			}
+		}
+	},
+	"ReceiverParty": {
+		"Contact": {
+			"Note": {
+				"value": ""
+			}
+		}
+	}
+}
