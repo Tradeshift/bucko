@@ -1,6 +1,6 @@
 {
 	"host": {
-		"app": "aaa0e790.ngrok.io",
+		"app": "vast-basin-3686.herokuapp.com",
 		"tradeshift": "api-fs-sandbox.tradeshift.com"
 	},
 	"local": false,
@@ -20,6 +20,6 @@
 			"openidconnect": true
 		},
 		"vendor_id": "Developer",
-		"version": "0.0.7"
+		"version": "0.0.8"
 	}
 }

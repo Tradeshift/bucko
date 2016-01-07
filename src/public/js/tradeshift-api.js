@@ -22,6 +22,7 @@
 
 
 	function getAccountInfo() {
+		resultArea.innerHTML = 'Loading...';
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', encodeURI([host, 'ts/info'].join('/')), true);
 		xhr.onload = function() {
@@ -50,7 +51,34 @@
 		return _request('GET', path);
 	}
 
+	function generateConnections() {
+		resultArea.innerHTML = 'Loading...';
+		var path = ['generate', 'connections'].join('/');
+		_request('POST', path).then(function(result) {
+			resultArea.innerHTML = JSON.stringify(result, undefined, 2);
+		});
+	}
+
+	function generateDocuments() {
+		resultArea.innerHTML = 'Loading...';
+		var path = ['generate', 'documents'].join('/');
+		_request('POST', path).then(function(result) {
+			resultArea.innerHTML = JSON.stringify(result, undefined, 2);
+		});
+	}
+
+	function generatePayments() {
+		resultArea.innerHTML = 'Loading...';
+		var path = ['generate', 'documents', 'payments'].join('/');
+		_request('POST', path).then(function(result) {
+			resultArea.innerHTML = JSON.stringify(result, undefined, 2);
+		});
+	}
+
 	document.tradeshift = {
+		generateConnections: generateConnections,
+		generateDocuments: generateDocuments,
+		generatePayments: generatePayments,
 		getAccountInfo: getAccountInfo,
 		getCustomers: getCustomers,
 		thank: thank,

@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var fs = require('fs');
+var fs = require('fs-extra');
 var path = require('path');
 var url = require('url');
 
@@ -13,15 +13,6 @@ Configuration.prototype = {
 	},
 	isLocalDevelopment: function() {
 		return this._data.local;
-	},
-	getGlobals: function() {
-		return {
-			host: url.format({
-				protocol: this.isLocalDevelopment() ? 'http' : 'https',
-				hostname: this.isLocalDevelopment() ? 'localhost' : this.getAppHost(),
-				port: this.isLocalDevelopment() ? this.getAppPort() : null,
-			}),
-		};
 	},
 
 	getTradeshiftHost: function() {
@@ -70,13 +61,10 @@ Configuration.prototype = {
 	},
 
 	getAuthSecret: function() {
-		return this._data.oauth.secret;
+		return process.env.OAUTH_SECRET || this._data.oauth.secret;
 	},
 	getAppHost: function() {
 		return this._data.host.app;
-	},
-	getAppPort: function() {
-		return this._data.port.app;
 	},
 	getAppPaths: function() {
 		return this._data.path.app;
@@ -90,9 +78,14 @@ Configuration.load = function(rootPath) {
 	var config = {};
 	var files = ['defaults', 'local', 'oauth'];
 	_.forEach(files, function(value, key) {
+		var data;
 		var file = path.resolve(rootPath, [value, '.json'].join(''));
-		var data = JSON.parse(fs.readFileSync(file));
-		_.merge(config, data);
+		if (fs.existsSync(file)) {
+			data = fs.readJsonSync(file, {throws: false});
+		}
+		if (data) {
+			_.merge(config, data);
+		}
 	});
 	return new Configuration(config);
 };

@@ -5,13 +5,13 @@ var logger = require('morgan');
 var path = require('path');
 var session = require('express-session');
 
-var Configuration = require('./lib/Configuration');
-var globalConfig = require('./config');
+var Configuration = require('./src/lib/Configuration');
+var globalConfig = require('./src/config');
 
-var app = express();
+var app = module.exports = express();
 
 // load config
-globalConfig.set(Configuration.load(path.resolve(__dirname, '../config')));
+globalConfig.set(Configuration.load(path.resolve(__dirname, './config')));
 
 // view engine setup
 var handlebars = expressHandlebars.create({
@@ -22,16 +22,16 @@ var handlebars = expressHandlebars.create({
 			return globalConfig.get().getUIComponentsVersion();
 		},
 	},
-	layoutsDir: path.join(__dirname, 'views/layouts'),
-	partialsDir: path.join(__dirname, 'views/partials'),
+	layoutsDir: path.join(__dirname, './src/views/layouts'),
+	partialsDir: path.join(__dirname, './src/views/partials'),
 });
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './src/views'));
 app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
 
 // serve static files
-app.use(express.static(path.join(__dirname, '../images')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './images')));
+app.use(express.static(path.join(__dirname, './src/public')));
 
 // disable logging for static content requests
 app.use(logger('dev'));
@@ -48,10 +48,11 @@ app.use(session({
 }));
 
 // define routes
-app.use('/', require('./routes/app'));
-app.use('/auth', require('./routes/auth'));
-app.use('/loyalty', require('./routes/loyalty'));
-app.use('/ts', require('./routes/ts-api'));
+app.use('/', require('./src/routes/app'));
+app.use('/auth', require('./src/routes/auth'));
+app.use('/generate', require('./src/routes/generate'));
+app.use('/loyalty', require('./src/routes/loyalty'));
+app.use('/ts', require('./src/routes/ts-api'));
 
 // set error handlers
 app.use(function(error, req, res, next) {
@@ -62,5 +63,3 @@ app.use(function(error, req, res, next) {
 		message: error.message,
 	});
 });
-
-module.exports = app;

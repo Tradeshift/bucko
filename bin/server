@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 var http = require('http');
+var path = require('path');
 
-var app = require('../src/server');
+var app = require(path.resolve(__dirname, '../server'));
 
 // set host and port for server
 var host = '0.0.0.0';

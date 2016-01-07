@@ -1,6 +1,4 @@
-var Configuration = require('./lib/Configuration');
-
-var config = new Configuration({});
+var config = {};
 
 module.exports = {
 	set: function(configuration) {
