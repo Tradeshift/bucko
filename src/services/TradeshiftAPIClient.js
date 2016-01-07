@@ -25,7 +25,9 @@ TradeshiftAPIClient.prototype = {
 		var that = this;
 		options = options || {};
 		return Q.Promise(function(resolve, reject) {
-			var path = url.resolve(config.getTradeshiftApiUri(), options.path);
+			var base = [config.getTradeshiftApiUri(), '/'].join('');
+			var path = url.resolve(base, options.path);
+			console.log('Will make request to', path);
 			var req = request(options.method || 'GET', path)
 				.set('Accept', options.accept || 'application/json')
 				.set('Content-Type', options.contentType || 'application/json')
@@ -40,8 +42,9 @@ TradeshiftAPIClient.prototype = {
 			if (!_.isEmpty(options.data)) {
 				req.send(options.data);
 			}
-			req.end(function(error, result) {
-				resolve(result.body);
+			req.end(function(error, response) {
+				console.log('Tradeshift request finished', path, response.text, response.status, error);
+				resolve(response.body);
 			});
 		});
 	},
@@ -56,6 +59,85 @@ TradeshiftAPIClient.prototype = {
 			var file = path.resolve(__dirname, '../../data/customers.json');
 			return Q(fs.readJsonSync(file));
 		}
+	},
+	getAccountInfo: function() {
+		return this._request({
+			path: ['account', 'info'].join('/'),
+		});
+	},
+	getInvoices: function(isLocal) {
+		if (isLocal) {
+			return Q.reject('Not implemented in local environment');
+		}
+
+		return this._request({
+			method: 'GET',
+			path: 'documents',
+			query: {
+				_onlyIndex: true,
+				ascending: false,
+				limit: 100,
+				ordering: 'LastEdit',
+				page: 0,
+				sales: true,
+				type: 'invoice',
+			},
+		}).then(function(result) {
+			console.log('got back some stuff on documents', result);
+			return _.map(result.Document, function(doc) {
+				return {
+					documentId: doc.DocumentId,
+					customerName: doc.ReceiverCompanyName,
+					datePaid: getPaymentDate(doc.ConversationStates),
+					documentType: doc.DocumentType.type,
+					documentNumber: doc.ID,
+					issueDate: getDocumentItemInfoValue(doc.ItemInfos, 'document.issuedate'),
+					currency: getDocumentItemInfoValue(doc.ItemInfos, 'document.currency'),
+					amount: getDocumentItemInfoValue(doc.ItemInfos, 'document.total'),
+					isThanked: false
+				};
+			});
+		});
+	},
+	getRecentUnpaidInvoices: function(isLocal) {
+		if (isLocal) {
+			return Q.reject('Not implemented in local environment');
+		}
+
+		return this._request({
+			method: 'GET',
+			path: 'documents',
+			query: {
+				_onlyIndex: true,
+				ascending: false,
+				limit: 100,
+				ordering: 'LastEdit',
+				page: 0,
+				sales: true,
+				state: [
+					'ACCEPTED',
+					'SENT',
+					'DELIVERED',
+					'OVERDUE',
+				],
+				type: 'invoice',
+				withouttag: 'loyalty',
+			},
+		}).then(function(result) {
+			console.log('got back some stuff on documents', result);
+			return _.map(result.Document, function(doc) {
+				return {
+					documentId: doc.DocumentId,
+					customerName: doc.ReceiverCompanyName,
+					documentType: doc.DocumentType.type,
+					documentNumber: doc.ID,
+					issueDate: getDocumentItemInfoValue(doc.ItemInfos, 'document.issuedate'),
+					currency: getDocumentItemInfoValue(doc.ItemInfos, 'document.currency'),
+					amount: getDocumentItemInfoValue(doc.ItemInfos, 'document.total'),
+					isThanked: false
+				};
+			});
+		});
 	},
 	getRecentPaidInvoices: function(isLocal) {
 		if (isLocal) {
@@ -82,7 +164,7 @@ TradeshiftAPIClient.prototype = {
 			return _.map(result.Document, function(doc) {
 				return {
 					documentId: doc.DocumentId,
-					customerName: doc.SenderCompanyName,
+					customerName: doc.ReceiverCompanyName,
 					documentType: doc.DocumentType.type,
 					documentNumber: doc.ID,
 					datePaid: getPaymentDate(doc.ConversationStates),
@@ -92,6 +174,14 @@ TradeshiftAPIClient.prototype = {
 					isThanked: false
 				};
 			});
+		});
+	},
+	changeDocumentState: function(options) {
+		console.log('changing state on', options.documentId);
+		return this.sendDocument({
+			documentContent: options.documentContent,
+			documentId: options.documentId,
+			documentProfileId: 'tradeshift.status.1.0',
 		});
 	},
 	addCommentToDocument: function(options) {
@@ -125,6 +215,43 @@ TradeshiftAPIClient.prototype = {
 			path: ['documents', options.documentId].join('/'),
 			query: {
 				documentProfileId: options.documentProfileId,
+			},
+		});
+	},
+	dispatchDocument: function(options) {
+		var that = this;
+		return that.sendDocument(options).then(function() {
+			var dispatchId = uuid.v4();
+			return that._request({
+				data: {
+					ConnectionId: options.connectionId,
+				},
+				method: 'PUT',
+				path: ['documents', options.documentId, 'dispatches', dispatchId].join('/'),
+			});
+		});
+	},
+	getConnections: function(options) {
+		console.log('getting connections');
+		return this._request({
+			method: 'GET',
+			path: ['network', 'connections'].join('/'),
+			query: {
+				limit: 100,
+				page: 0,
+			},
+		}).then(function(result) {
+			return result.Connection;
+		});
+	},
+	sendConnectionRequest: function(options) {
+		console.log('sending connection request', options.connection.ConnectionId);
+		return this._request({
+			data: options.connection,
+			method: 'PUT',
+			path: ['network', 'connections', options.connection.ConnectionId].join('/'),
+			query: {
+				skipRequest: false,
 			},
 		});
 	},

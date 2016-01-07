@@ -50,6 +50,7 @@ app.use(session({
 // define routes
 app.use('/', require('./src/routes/app'));
 app.use('/auth', require('./src/routes/auth'));
+app.use('/generate', require('./src/routes/generate'));
 app.use('/loyalty', require('./src/routes/loyalty'));
 app.use('/ts', require('./src/routes/ts-api'));
 
