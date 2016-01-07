@@ -43,16 +43,57 @@ TradeshiftAPIClient.prototype = {
 				req.send(options.data);
 			}
 			req.end(function(error, response) {
-				console.log('Tradeshift request finished', path, response.text, response.status, error);
+				//console.log('Tradeshift request finished', path, response.text, response.status, error);
 				resolve(response.body);
 			});
 		});
 	},
 	getCustomerCounts: function(isLocal) {
-		if (isLocal || !isLocal) {
+		if (isLocal) {
 			var file = path.resolve(__dirname, '../../data/customerCounts.json');
 			return Q(fs.readJsonSync(file));
 		}
+		return Q.all([
+			this.getInvoices(),
+			this.getConnections(),
+		]).spread(function(docs, connections) {
+			console.log('back with connections', connections);
+			_.forEach(connections, function(connection) {
+				console.log('first', connection.ConnectionId);
+				_.assign(connection, {
+					documents: [],
+				});
+			});
+			_.forEach(docs, function(doc) {
+				console.log('second', doc.documentId);
+				var connection = _.find(connections, function(connection) {
+					return connection.CompanyName === doc.customerName;
+				});
+				console.log('the abusing document is', doc);
+				console.log('third', connection.ConnectionId);
+				connection.documents.push(doc);
+			});
+			console.log("Hellooooo",connections)
+			return _.chain(connections)
+				.map(function(connection) {
+					return {
+						connectionId: connection.ConnectionId,
+						customerName: connection.CompanyName,
+						isReminded: false,
+						purchaseCount: _.size(connection.documents),
+						lastPurchase: _.max(connection.documents, function(doc) {
+							return doc.issueDate.replace(/-/g, '');
+						}),
+					};
+				})
+				.filter(function(connection) {
+					return !_.isEmpty(connection.lastPurchase);
+				})
+				.sortBy(function(connection) {
+					return connection.lastPurchase.issueDate.replace(/-/g, '');
+				})
+				.value();
+			});
 	},
 	getCustomers: function(isLocal) {
 		if (isLocal || !isLocal) {
@@ -83,7 +124,7 @@ TradeshiftAPIClient.prototype = {
 				type: 'invoice',
 			},
 		}).then(function(result) {
-			console.log('got back some stuff on documents', result);
+			//console.log('got back some stuff on documents', result);
 			return _.map(result.Document, function(doc) {
 				return {
 					documentId: doc.DocumentId,
@@ -160,7 +201,7 @@ TradeshiftAPIClient.prototype = {
 				withouttag: 'loyalty',
 			},
 		}).then(function(result) {
-			console.log('got back some stuff on documents', result);
+			//console.log('got back some stuff on documents', result);
 			return _.map(result.Document, function(doc) {
 				return {
 					documentId: doc.DocumentId,
@@ -241,7 +282,7 @@ TradeshiftAPIClient.prototype = {
 				page: 0,
 			},
 		}).then(function(result) {
-			return result.Connection;
+			return _.uniq(result.Connection, 'CompanyName');
 		});
 	},
 	sendConnectionRequest: function(options) {

@@ -30,8 +30,9 @@ router.get('/', function(request, response) {
 
 	Q.all([
 		ts.getRecentPaidInvoices(isLocal),
-		ts.getCustomers(isLocal),
+		ts.getCustomerCounts(isLocal),
 	]).spread(function(docs, customers) {
+		console.log('app results', customers);
 		response.status(200).render('sections', {
 			auth: {
 				companyId: request.session.auth.companyId,
@@ -48,6 +49,9 @@ router.get('/', function(request, response) {
 				}),
 			}),
 		});
+	}).catch(function(error) {
+		console.log('Oh snap! error loading recent data', error);
+		response.status(500).send(error);
 	});
 });
 

@@ -1,6 +1,6 @@
 [{
 	"documentId": "c54584c2-3bcd-4f0c-a553-e1cc7921ac89",
-	"customerName": "Ailane",
+	"companyName": "Ailane",
 	"documentType": "invoice",
 	"documentNumber": 1496,
 	"datePaid": "2015-09-05",
@@ -9,7 +9,7 @@
 	"isThanked": false
 }, {
 	"documentId": "206d05da-089c-47d1-82a9-33dc1114613b",
-	"customerName": "Shuffledrive",
+	"companyName": "Shuffledrive",
 	"documentType": "invoice",
 	"documentNumber": 1398,
 	"datePaid": "2015-10-13",
@@ -18,7 +18,7 @@
 	"isThanked": false
 }, {
 	"documentId": "1a8850a1-5118-4fb9-95bb-34744c5a2665",
-	"customerName": "Camimbo",
+	"companyName": "Camimbo",
 	"documentType": "invoice",
 	"documentNumber": 1901,
 	"datePaid": "2015-10-24",
@@ -27,7 +27,7 @@
 	"isThanked": false
 }, {
 	"documentId": "5c4d6a60-2abc-4134-967f-24cf6716f63a",
-	"customerName": "Wordpedia",
+	"companyName": "Wordpedia",
 	"documentType": "invoice",
 	"documentNumber": 1743,
 	"datePaid": "2015-09-15",
@@ -36,7 +36,7 @@
 	"isThanked": true
 }, {
 	"documentId": "eb56b355-4a4f-48cb-b838-93ff3e792ccb",
-	"customerName": "Skinix",
+	"companyName": "Skinix",
 	"documentType": "invoice",
 	"documentNumber": 1892,
 	"datePaid": "2015-11-19",
@@ -45,7 +45,7 @@
 	"isThanked": true
 }, {
 	"documentId": "6604c2d9-3b05-492c-b5fc-34d2ab62a818",
-	"customerName": "Gigaclub",
+	"companyName": "Gigaclub",
 	"documentType": "invoice",
 	"documentNumber": 1196,
 	"datePaid": "2015-07-28",
@@ -54,7 +54,7 @@
 	"isThanked": false
 }, {
 	"documentId": "f79ccfa5-0659-49e8-9419-a1230210c8d9",
-	"customerName": "Eidel",
+	"companyName": "Eidel",
 	"documentType": "invoice",
 	"documentNumber": 1993,
 	"datePaid": "2015-07-19",
@@ -63,7 +63,7 @@
 	"isThanked": false
 }, {
 	"documentId": "0889e9f0-bb94-41a6-8cdb-2940a519a51a",
-	"customerName": "Gigabox",
+	"companyName": "Gigabox",
 	"documentType": "invoice",
 	"documentNumber": 1903,
 	"datePaid": "2015-06-07",
@@ -72,7 +72,7 @@
 	"isThanked": false
 }, {
 	"documentId": "4e5d1505-f078-4dd4-968b-347ac97d186a",
-	"customerName": "Yozio",
+	"companyName": "Yozio",
 	"documentType": "invoice",
 	"documentNumber": 1121,
 	"datePaid": "2015-08-09",
@@ -81,7 +81,7 @@
 	"isThanked": false
 }, {
 	"documentId": "9678a9f5-9fa4-4db6-9931-2f23e5fc55db",
-	"customerName": "Yoveo",
+	"companyName": "Yoveo",
 	"documentType": "invoice",
 	"documentNumber": 1420,
 	"datePaid": "2015-06-15",
@@ -90,7 +90,7 @@
 	"isThanked": true
 }, {
 	"documentId": "0264e032-4256-46fd-9c55-df638d2c8569",
-	"customerName": "Jabbercube",
+	"companyName": "Jabbercube",
 	"documentType": "invoice",
 	"documentNumber": 1676,
 	"datePaid": "2015-10-24",
@@ -99,7 +99,7 @@
 	"isThanked": true
 }, {
 	"documentId": "52b587f8-c8a1-49e5-9410-e16f033c1733",
-	"customerName": "Jabberbean",
+	"companyName": "Jabberbean",
 	"documentType": "invoice",
 	"documentNumber": 1991,
 	"datePaid": "2015-10-12",
@@ -108,7 +108,7 @@
 	"isThanked": false
 }, {
 	"documentId": "5ee8a72b-4ca7-4c9e-9075-4c9d1833e739",
-	"customerName": "Demimbu",
+	"companyName": "Demimbu",
 	"documentType": "invoice",
 	"documentNumber": 1886,
 	"datePaid": "2015-11-20",
@@ -117,7 +117,7 @@
 	"isThanked": true
 }, {
 	"documentId": "d992be3f-9cca-417a-a9b5-d5c10f169704",
-	"customerName": "Thoughtworks",
+	"companyName": "Thoughtworks",
 	"documentType": "invoice",
 	"documentNumber": 1721,
 	"datePaid": "2015-07-07",
@@ -126,7 +126,7 @@
 	"isThanked": false
 }, {
 	"documentId": "57daa2ac-2621-4bda-9046-d9712f800808",
-	"customerName": "Photobean",
+	"companyName": "Photobean",
 	"documentType": "invoice",
 	"documentNumber": 1862,
 	"datePaid": "2014-12-07",
@@ -135,7 +135,7 @@
 	"isThanked": true
 }, {
 	"documentId": "6bef76a7-4bcc-4ac4-80e2-ea31a6e72b61",
-	"customerName": "DabZ",
+	"companyName": "DabZ",
 	"documentType": "invoice",
 	"documentNumber": 1043,
 	"datePaid": "2015-05-28",
@@ -144,7 +144,7 @@
 	"isThanked": true
 }, {
 	"documentId": "1521967f-8fbe-432e-aba5-8694f83de6ac",
-	"customerName": "Kanoodle",
+	"companyName": "Kanoodle",
 	"documentType": "invoice",
 	"documentNumber": 1801,
 	"datePaid": "2015-09-03",
@@ -153,7 +153,7 @@
 	"isThanked": false
 }, {
 	"documentId": "d8ca4e09-798c-44a8-951a-b3cae6af56ac",
-	"customerName": "Blogtag",
+	"companyName": "Blogtag",
 	"documentType": "invoice",
 	"documentNumber": 1224,
 	"datePaid": "2015-02-14",
@@ -162,7 +162,7 @@
 	"isThanked": false
 }, {
 	"documentId": "c60313a7-aba1-4e80-90b1-37ce68f402ec",
-	"customerName": "Midel",
+	"companyName": "Midel",
 	"documentType": "invoice",
 	"documentNumber": 1703,
 	"datePaid": "2015-10-27",
@@ -171,7 +171,7 @@
 	"isThanked": true
 }, {
 	"documentId": "9a6f24a1-64be-4700-b41b-8f4a557e9e63",
-	"customerName": "Miboo",
+	"companyName": "Miboo",
 	"documentType": "invoice",
 	"documentNumber": 1062,
 	"datePaid": "2015-02-14",

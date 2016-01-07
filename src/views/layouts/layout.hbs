@@ -6,6 +6,47 @@
 		<main ts-main>
 			{{{body}}}
 		</main>
+		<aside id="myaside" ts-aside ts.open="false">
+			<div ts-panel>
+			<p>Remind <span id="js-companyName"></span> that you still exist!<p>
+<form ts-form>
+	<fieldset>
+		<span>Reward Options</span>
+		<label>
+			<input type="checkbox"/>
+			<span>10% Off Next Order</span>
+		</label>
+		<label>
+			<input type="checkbox"/>
+			<span>Free Shipping</span>
+		</label>
+		<label>
+			<input type="checkbox"/>
+			<span>Thank you for your loyalty!</span>
+		</label>
+		<label>
+			<input type="checkbox"/>
+			<span>Come back to us!</span>
+		</label>
+	</fieldset>
+</form>
+			<form ts-form>
+	<fieldset>
+		<label>
+			<span>Say something nice to your customer ...</span>
+			<textarea id="js-message"></textarea>
+		</label>
+	</fieldset>
+</form>
+<span style="display:none;" id="js-documentId"></span>
+<span style="display:none;" id="js-documentNumber"></span>
+<menu ts-buttons>
+<button onclick="document.recent.thank()" ts-button class="ts-secondary">
+	<span>Send</span>
+</button>
+</menu>
+			</div>
+		</aside>
 		{{>scripts}}
 	</body>
 </html>

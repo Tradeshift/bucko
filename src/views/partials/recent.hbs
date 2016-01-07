@@ -1,5 +1,26 @@
-<h1>Recent</h1>
-{{#each documents}}
-	<div>{{documentId}} - {{documentNumber}} - {{companyName}} - {{amount}}</div>
-	<button onclick="recent.thank('{{documentId}}', '{{documentNumber}}')">Thank you!</button>
-{{/each}}
+<table style="border-collapse:collapse;">
+  <colgroup>
+    <col span="2" style="background-color:">
+    <col style="background-color:">
+  </colgroup>
+  <tr style= "border-bottom:1px solid black;">
+    <th><strong>Say Thanks!</strong></th>
+    <th style="padding-left:15px; border-left:1px solid black"><strong>Bring them back!</strong></th>
+  </tr>
+  <tr>
+    <td>{{#each documents}}
+    <div class="document-wrapper" data-document-id="{{documentId}}">
+		<div>{{customerName}} / {{amount}} {{currency}} / {{datePaid}} <button onclick="recent.open('{{documentId}}','{{documentNumber}}','{{customerName}}')";>Thank you!</button></div><div class="thank-you-message">Has been thanked!</div></div>
+		{{/each}}</td>
+
+    <td style="padding-left:15px;border-left:1px solid black">	{{#each customers}}
+   <div class="document-wrapper" data-document-id="{{lastPurchase.documentId}}">
+		<div>{{customerName}} / {{lastPurchase.issueDate}} <button onclick="recent.open('{{lastPurchase.documentId}}', '{{lastPurchase.documentNumber}}','{{customerName}}')">Come Back!</button></div><div class="thank-you-message">Message Sent!</div></div>
+	{{/each}}</td>
+  </tr>
+</table>
+<aside ts-aside>
+	<div ts-panel>
+		<p>This is the Aside content.</p>
+	</div>
+</aside>

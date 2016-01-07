@@ -1,13 +1,13 @@
 {
 	"host": {
-		"app": "vast-basin-3686.herokuapp.com",
-		"tradeshift": "api-fs-sandbox.tradeshift.com"
+		"app": "e51dc812.ngrok.io",
+		"tradeshift": "api-sandbox.tradeshift.com"
 	},
 	"local": false,
 	"manifest": {
-		"app_desc": "A simple Tradeshift app that demonstrates making API calls using OAuth2",
-		"app_id": "AlphaApp",
-		"app_name": "Alpha App",
+		"app_desc": "An app that does great things",
+		"app_id": "CarolinesApp",
+		"app_name": "Carolines App",
 		"permissions": {
 			"document_create": true,
 			"document_send": true,
@@ -19,7 +19,7 @@
 			"network_view": true,
 			"openidconnect": true
 		},
-		"vendor_id": "Developer",
-		"version": "0.0.8"
+		"vendor_id": "CarolineThierry",
+		"version": "0.0.4"
 	}
 }
