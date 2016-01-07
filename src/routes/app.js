@@ -44,7 +44,7 @@ router.get('/', function(request, response) {
 				host: url.format({
 					protocol: config.isLocalDevelopment() ? 'http' : 'https',
 					hostname: request.hostname,
-					port: request.app.get('port'),
+					port: config.isLocalDevelopment() ? request.app.get('port') : '',
 				}),
 			}),
 		});
