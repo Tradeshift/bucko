@@ -15,7 +15,9 @@ router.get('/', function(request, response) {
 	if (!isAuthenticated && !isLocal) {
 		response.redirect('/auth/token');
 		return;
-	} else {
+	}
+
+	if (isLocal) {
 		request.session.auth = {
 			accessToken: 'fakeAccessToken',
 			companyId: 'fakeCompanyId',
@@ -40,7 +42,7 @@ router.get('/', function(request, response) {
 			documents: docs,
 			globals: JSON.stringify({
 				host: url.format({
-					protocol: request.protocol,
+					protocol: config.isLocalDevelopment() ? 'http' : 'https',
 					hostname: request.hostname,
 					port: request.app.get('port'),
 				}),
