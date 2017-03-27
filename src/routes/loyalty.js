@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var express = require('express');
-var Q = require('Q');
+var Q = require('q');
 
 var TradeshiftAPIClient = require('../services/TradeshiftAPIClient');
 
