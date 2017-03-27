@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "0.12.0"
+    "node": "6.9.5"
   },
   "dependencies": {
     "body-parser": "^1.14.2",

@@ -1,7 +1,7 @@
 {
 	"host": {
-		"app": "vast-basin-3686.herokuapp.com",
-		"tradeshift": "api-fs-sandbox.tradeshift.com"
+		"app": "extern.herokuapp.com",
+		"tradeshift": "extern.eu-west-1.test.ts.sv"
 	},
 	"local": false,
 	"manifest": {
