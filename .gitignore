@@ -1,4 +1,5 @@
 .DS_Store
-config/oauth.json
 node_modules
 npm-debug.log
+.env
+temp

@@ -1,17 +1,44 @@
-## App Developer Bucko
+## Bucko
 
-Friendly assistance to get started developing apps for the Tradeshift platform.
+Provides some friendly assistance to get started developing apps on the Tradeshift platform.
 
 ## Setup
 
-Start by running `./bin/setup` to:
+1. Install dependencies.
 
-* Install git hooks
-* Execute `npm install`
-* Create a file at `config/oauth.json` for your OAuth secret to be stored
+    ```bash
+    $ npm install
+    ```
 
-Edit `config/local.json` to define properties of your app, which will override values set in `config/default.json`.
+2. Activate the [Bucko](https://sandbox.tradeshift.com/#/apps/Tradeshift.AppStore/apps/Tradeshift.Bucko) app on Tradeshift to get API credentials.
 
-Run `./bin/manifest` to generate a manifest file, which should be sent to Tradeshift to be released to an environment.
+3. Run the command shown in the Bucko app to setup environment variables.
 
-Start the NodeJS server by running `npm start`.
+    ```bash
+    $ cat > .env << EOF
+    # API credentials for Bucko on Tradeshift
+    # https://sandbox.tradeshift.com/#/apps/Tradeshift.Bucko
+    TS_API_HOST=<api host>
+    TS_COMPANY_ID=<company id>
+    TS_CONSUMER_KEY=<consumer key>
+    TS_CONSUMER_SECRET=<consumer secret>
+    TS_TOKEN=<token>
+    TS_TOKEN_SECRET=<token secret>
+    EOF
+    ```
+
+4. Create an app and release it on Tradeshift.
+
+    ```bash
+    $ npm run create-app
+    ```
+
+5. Start the server - along with the tunnel - so requests for your app are redirected to your local server.
+
+    ```bash
+    $ npm run start-app
+    ```
+
+6. Activate your app in Tradeshift (the appstore URL was shown in the output of `npm run create-app`) and you should be able to develop locally and see the changes in Tradeshift.
+
+Happy coding!
