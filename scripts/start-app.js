@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const execa = require('execa');
 const localtunnel = require('localtunnel');
-const manifest = require('../manifest.json');
+const manifest = require('../manifest.json'); // eslint-disable-line import/no-unresolved
 
 const PORT = process.env.PORT || 3043;
 const TUNNEL_DOMAIN = 'localtunnel.me';
