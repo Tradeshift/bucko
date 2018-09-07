@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 const http = require('http');
-const app = require('./app');
+// const app = require('./app');
+const app = require('./oauth');
 
 const PORT = process.env.PORT || 3001;
 
