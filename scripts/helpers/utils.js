@@ -17,7 +17,7 @@ const buildAppEmbedUrl = ({ appId, tsApiHost, vendorId }) =>
 const buildAppUrl = ({ appId, host, vendorId }) =>
 	`https://${vendorId.toLowerCase()}${appId.toLowerCase()}.${host}/`;
 
-const buildRedirectUrl = host => `${host}/auth/callback`;
+const buildRedirectUrl = host => `${host}auth/callback`;
 
 const convertAppNameToId = appName => appName.replace(/\s/g, '');
 
