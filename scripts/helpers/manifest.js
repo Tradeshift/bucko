@@ -34,7 +34,11 @@ async function updateManifest(manifest, tunnelHost) {
 	manifest.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
 	manifest.version = `0.0.0-${hash(manifest)}`;
 
+	const clientSecret = utils.getClientSecret() || await utils.createClientSecret();
+	const app = templates.app({ appId: manifest.app_id, clientSecret, appUrl: tunnelHost });
+
 	try {
+		await api.saveApp(auth, { app, vendorId: manifest.vendor_id });
 		await utils.writeManifest(manifest);
 		await api.releaseVersion(auth, { version: manifest });
 	} catch (e) {
