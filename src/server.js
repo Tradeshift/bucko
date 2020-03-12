@@ -5,7 +5,7 @@ const app = require('./app');
 
 const PORT = process.env.PORT || 3001;
 
-http.createServer(app.callback()).listen(PORT, async (err) => {
+http.createServer(app.callback()).listen(PORT,  (err) => {
 	if (err) {
 		console.error(err);
 		process.exit(1);

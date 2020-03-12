@@ -10,6 +10,7 @@
 		"dev": "./node_modules/nodemon/bin/nodemon.js src/server.js",
 		"lint": "eslint scripts src",
 		"start-app": "node scripts/start-app.js",
+		"d-app": "node scripts/d-app.js",
 		"start": "node src/server.js"
 	},
 	"engines": {
@@ -23,6 +24,7 @@
 		"docker-names": "1.0.3",
 		"dotenv": "5.0.1",
 		"execa": "0.10.0",
+		"fasttunnel": "2.0.1",
 		"handlebars": "4.0.11",
 		"js-base64": "2.4.3",
 		"jwt-simple": "0.5.1",
@@ -37,6 +39,7 @@
 		"passport-oauth2": "1.4.0",
 		"request": "2.85.0",
 		"request-promise-native": "1.0.5",
+		"share-localhost": "1.0.4",
 		"uuid": "3.2.1"
 	},
 	"devDependencies": {
