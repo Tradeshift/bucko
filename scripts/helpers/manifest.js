@@ -28,19 +28,24 @@ async function generateManifest(tunnelHost) {
 	return Promise.resolve({ appId, appName, vendorId });
 }
 
-async function updateManifest(manifest, tunnelHost) {
+async function updateManifest(version, tunnelHost) {
 	const auth = utils.getAuth();
-	manifest.app.main = tunnelHost;
-	manifest.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
-	manifest.version = `0.0.0-${hash(manifest)}`;
+	version.app.main = tunnelHost;
+	version.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
+	version.version = `0.0.0-${hash(version)}`;
 
 	const clientSecret = utils.getClientSecret() || await utils.createClientSecret();
-	const app = templates.app({ appId: manifest.app_id, clientSecret, appUrl: tunnelHost });
+
+	const vendorId = version.vendor_id;
+	const appId = version.app_id;
+	const appUrl = tunnelHost;
+
+	const app = templates.app({ appId, clientSecret, appUrl });
 
 	try {
-		await api.saveApp(auth, { app, vendorId: manifest.vendor_id });
-		await utils.writeManifest(manifest);
-		await api.releaseVersion(auth, { version: manifest });
+		await api.saveApp(auth, { app, vendorId });
+		await utils.writeManifest(version);
+		await api.releaseVersion(auth, { version });
 	} catch (e) {
 		return Promise.reject(e);
 	}
