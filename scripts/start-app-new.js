@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const execa = require('execa');
 const { LocalOut } = require('share-localhost');
 const chalk = require('chalk');
