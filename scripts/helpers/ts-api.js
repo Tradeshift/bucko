@@ -34,21 +34,26 @@ const doRequest = async (auth, { body, method = 'GET', url }) => {
 	}
 };
 
-const getAccount = async auth =>
-	doRequest(auth, { url: '/account/info/user' });
+const getAccount = async (auth) => doRequest(auth, { url: '/account/info/user' });
 
-const getVendor = async auth =>
-	doRequest(auth, { url: `/apps/company/${auth.companyId}/vendor` });
+const getVendor = async (auth) => doRequest(auth, { url: `/apps/company/${auth.companyId}/vendor` });
 
-const releaseVersion = async (auth, { version }) =>
-	doRequest(auth, { body: version, method: 'POST', url: '/apps/release' });
+const releaseVersion = async (auth, { version }) => doRequest(
+	auth, { body: version, method: 'POST', url: '/apps/release' },
+);
 
-const saveApp = async (auth, { app, vendorId }) =>
-	doRequest(auth, { body: app, method: 'PUT', url: `/apps/vendors/${vendorId}/apps/${app.AppId}` });
+const saveApp = async (auth, { app, vendorId }) => doRequest(
+	auth, { body: app, method: 'PUT', url: `/apps/vendors/${vendorId}/apps/${app.AppId}` },
+);
+
+const getApp = async (auth, { appId, vendorId }) => doRequest(
+	auth, { method: 'GET', url: `/apps/vendors/${vendorId}/apps/${appId}` },
+);
 
 module.exports = {
 	getAccount,
 	getVendor,
 	releaseVersion,
 	saveApp,
+	getApp,
 };
