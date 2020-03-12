@@ -10,7 +10,7 @@
 		"dev": "./node_modules/nodemon/bin/nodemon.js src/server.js",
 		"lint": "eslint scripts src",
 		"start-app": "node scripts/start-app.js",
-		"d-app": "node scripts/d-app.js",
+		"start-app:v2": "node scripts/start-app-new.js",
 		"start": "node src/server.js"
 	},
 	"engines": {

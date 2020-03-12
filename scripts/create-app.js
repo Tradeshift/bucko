@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const chalk = require('chalk');
 const utils = require('./helpers/utils');
-const { generateManifest } = require('./helpers/manifest-generator');
+const { generateManifest } = require('./helpers/manifest');
 
 const TUNNEL_DOMAIN = 'localtunnel.me';
 

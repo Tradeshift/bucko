@@ -2,9 +2,8 @@ const api = require('./ts-api');
 const utils = require('./utils');
 const templates = require('./templates');
 
-async function generateManifest(tunnelHost, isHostFull = false) {
+async function generateManifest(tunnelHost) {
 	const auth = utils.getAuth();
-
 	const vendor = await api.getVendor(auth);
 	const vendorId = vendor.VendorId;
 
@@ -28,4 +27,19 @@ async function generateManifest(tunnelHost, isHostFull = false) {
 	return Promise.resolve({ appId, appName, vendorId });
 }
 
-module.exports = { generateManifest };
+async function updateManifest(manifest, tunnelHost) {
+	const auth = utils.getAuth();
+	manifest.app.main = tunnelHost;
+	manifest.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
+
+	try {
+		await utils.writeManifest(manifest);
+		await api.releaseVersion(auth, { version: manifest });
+	} catch (e) {
+		return Promise.reject(e);
+	}
+
+	return Promise.resolve();
+}
+
+module.exports = { generateManifest, updateManifest };
