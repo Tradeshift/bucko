@@ -40,7 +40,8 @@
 		"request": "2.85.0",
 		"request-promise-native": "1.0.5",
 		"share-localhost": "1.0.4",
-		"uuid": "3.2.1"
+		"uuid": "3.2.1",
+		"object-hash": "2.0.3"
 	},
 	"devDependencies": {
 		"eslint": "4.19.1",

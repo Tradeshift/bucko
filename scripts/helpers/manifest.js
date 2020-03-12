@@ -1,6 +1,7 @@
 const api = require('./ts-api');
 const utils = require('./utils');
 const templates = require('./templates');
+const hash = require('object-hash');
 
 async function generateManifest(tunnelHost) {
 	const auth = utils.getAuth();
@@ -31,6 +32,7 @@ async function updateManifest(manifest, tunnelHost) {
 	const auth = utils.getAuth();
 	manifest.app.main = tunnelHost;
 	manifest.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
+	manifest.version = `0.0.0-${hash(manifest)}`;
 
 	try {
 		await utils.writeManifest(manifest);
