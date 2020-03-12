@@ -3,7 +3,7 @@ require('dotenv').config();
 const execa = require('execa');
 const { LocalOut } = require('share-localhost');
 const chalk = require('chalk');
-const { updateManifest } = require('./helpers/manifest');
+const { updateManifest, getFullAppName } = require('./helpers/manifest');
 
 const manifest = require('../manifest.json'); // eslint-disable-line import/no-unresolved
 
@@ -23,7 +23,12 @@ function openTunnel(port) {
 
 openTunnel(PORT)
 	.then(async (urlConfig) => {
-		const env = { PORT: urlConfig.port };
+		// set some environment variables for the app
+		const env = {
+			APP_HOST: urlConfig.host.slice(0, -1), // remove the trailing /
+			APP_CLIENT_ID: getFullAppName(manifest),
+			PORT,
+		};
 		await updateManifest(manifest, urlConfig.host);
 		// start up node server to handle requests
 		execa(`${process.cwd()}/node_modules/nodemon/bin/nodemon.js`, ['src/server.js'], { env }).stdout.pipe(process.stdout);

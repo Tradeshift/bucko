@@ -44,4 +44,8 @@ async function updateManifest(manifest, tunnelHost) {
 	return Promise.resolve();
 }
 
-module.exports = { generateManifest, updateManifest };
+function getFullAppName(manifest) {
+	return `${manifest.vendor_id}.${manifest.app_id}`;
+}
+
+module.exports = { generateManifest, updateManifest, getFullAppName };

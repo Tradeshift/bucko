@@ -1,13 +1,14 @@
 const chalk = require('chalk');
 const execa = require('execa');
 const localtunnel = require('localtunnel');
+const { getFullAppName } = require('./helpers/manifest');
 const manifest = require('../manifest.json'); // eslint-disable-line import/no-unresolved
 
 const PORT = process.env.PORT || 3043;
 const TUNNEL_DOMAIN = 'localtunnel.me';
 
 const appUrl = manifest.app.main;
-const clientId = `${manifest.vendor_id}.${manifest.app_id}`;
+const clientId = getFullAppName(manifest);
 const subdomain = clientId.toLowerCase().replace('.', '');
 
 if (appUrl.indexOf(TUNNEL_DOMAIN) === -1) {
