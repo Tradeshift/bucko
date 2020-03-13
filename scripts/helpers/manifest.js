@@ -38,7 +38,7 @@ async function updateManifest(version, tunnelHost) {
 
 	const vendorId = version.vendor_id;
 	const appId = version.app_id;
-	const appUrl = version.app.redirect_uri;
+	const appUrl = tunnelHost;
 
 	try {
 		const appData = await api.getApp(auth, { appId, vendorId });
