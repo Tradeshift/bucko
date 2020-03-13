@@ -38,11 +38,12 @@ async function updateManifest(version, tunnelHost) {
 
 	const vendorId = version.vendor_id;
 	const appId = version.app_id;
-	const appUrl = tunnelHost;
-
-	const app = templates.app({ appId, clientSecret, appUrl });
+	const appUrl = version.app.redirect_uri;
 
 	try {
+		const appData = await api.getApp(auth, { appId, vendorId });
+		const app = templates.app({ appId, clientSecret, appUrl, oldVersion: appData.CurrentVersion });
+
 		await api.saveApp(auth, { app, vendorId });
 		await utils.writeManifest(version);
 		await api.releaseVersion(auth, { version });

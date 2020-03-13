@@ -46,9 +46,13 @@ const releaseVersion = async (auth, { version }) =>
 const saveApp = async (auth, { app, vendorId }) =>
 	doRequest(auth, { body: app, method: 'PUT', url: `/apps/vendors/${vendorId}/apps/${app.AppId}` });
 
+const getApp = async (auth, { appId, vendorId }) =>
+	doRequest(auth, { method: 'GET', url: `/apps/vendors/${vendorId}/apps/${appId}` });
+
 module.exports = {
 	getAccount,
 	getVendor,
 	releaseVersion,
 	saveApp,
+	getApp,
 };
