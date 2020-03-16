@@ -13,7 +13,7 @@ if (!fs.existsSync(path.resolve(__dirname, '../manifest.json'))) {
 
 const manifest = require('../manifest.json'); // eslint-disable-line import/no-unresolved
 
-const PORT = process.env.PORT || 3043;
+const PORT = process.env.PORT || 8443;
 
 const env = {
 	APP_HOST: `https://localhost:${PORT}`,

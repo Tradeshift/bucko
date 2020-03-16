@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const app = require('./app');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8443;
 
 const cert = path.resolve(__dirname, '../certs/localhost.ts.sv');
 
