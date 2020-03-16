@@ -41,4 +41,16 @@ Provides some friendly assistance to get started developing apps on the Tradeshi
 
 6. Activate your app in Tradeshift (the appstore URL was shown in the output of `npm run create-app`) and you should be able to develop locally and see the changes in Tradeshift.
 
+# Troubleshooting
+
+If the tunnel does not work, you can run https server by doing next steps
+
+1. Run the server
+    ```bash
+    $ npm run start-app:local
+    ```
+2. Go to the `https://localhost:8443` and confirm self-signed certificate
+
+3. Go the Tradeshift and see your app running
+
 Happy coding!
