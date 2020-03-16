@@ -3,6 +3,17 @@ const api = require('./ts-api');
 const utils = require('./utils');
 const templates = require('./templates');
 
+function cloneObject(manifest) {
+	return Object.keys(manifest).reduce((res, key) => {
+		if (typeof manifest[key] === 'string') {
+			res[key] = manifest[key];
+		} else {
+			res[key] = { ...manifest[key] };
+		}
+		return res;
+	}, {});
+}
+
 async function generateManifest(tunnelHost) {
 	const auth = utils.getAuth();
 	const vendor = await api.getVendor(auth);
@@ -28,9 +39,10 @@ async function generateManifest(tunnelHost) {
 	return Promise.resolve({ appId, appName, vendorId });
 }
 
-async function updateManifest(version, tunnelHost) {
+async function updateManifest(manifest, tunnelHost) {
 	const auth = utils.getAuth();
 
+	const version = cloneObject(manifest);
 	version.app.main = tunnelHost;
 	version.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
 	version.version = `0.0.0-${hash(version)}`;
