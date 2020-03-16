@@ -17,7 +17,7 @@ app.use(error());
 // random key used so oauth dance is performed every time
 // TODO: implement refresh token strategy and use a constant key
 app.keys = [Math.random().toString().slice(2)];
-app.use(session(app));
+app.use(session({ sameSite: 'none' }, app));
 
 // hookup middleware for authentication with Tradeshift
 app.use(auth(app));

@@ -1,14 +1,22 @@
 require('dotenv').config();
 
-const http = require('http');
+const https = require('https');
 const app = require('./app');
 
 const PORT = process.env.PORT || 3001;
 
-http.createServer(app.callback()).listen(PORT,  (err) => {
+const path = require('path');
+const fs = require('fs');
+
+const cert = path.resolve(__dirname, '../certs/localhost.ts.sv');
+
+https.createServer({
+	cert: fs.readFileSync(`${cert}.cert`),
+	key: fs.readFileSync(`${cert}.key`),
+}, app.callback()).listen(PORT, (err) => {
 	if (err) {
 		console.error(err);
 		process.exit(1);
 	}
-	console.log(`We're up and running at http://localhost:${PORT}`);
+	console.log(`We're up and running at https://localhost:${PORT}`);
 });
