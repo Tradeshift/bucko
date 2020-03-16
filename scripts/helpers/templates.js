@@ -1,12 +1,12 @@
 const DataURI = require('datauri');
 
-const app = ({ appId: AppId, appUrl: RedirectUri, clientSecret: ClientSecret, oldVersion: CurrentVersion }) => ({
-	AppId,
+const app = ({appId, appUrl, clientSecret, oldVersion }) => ({
+	AppId: appId,
 	CategoryId: '55539855-574c-4841-5bdb-5a2831601045', // hidden category
-	ClientSecret,
+	ClientSecret: clientSecret,
 	DefaultLocale: 'en-us',
-	RedirectUri,
-	CurrentVersion,
+	RedirectUri: appUrl,
+	CurrentVersion: oldVersion,
 });
 
 const icon = () => (`

@@ -1,12 +1,11 @@
 require('dotenv').config();
 
 const https = require('https');
+const path = require('path');
+const fs = require('fs');
 const app = require('./app');
 
 const PORT = process.env.PORT || 3001;
-
-const path = require('path');
-const fs = require('fs');
 
 const cert = path.resolve(__dirname, '../certs/localhost.ts.sv');
 

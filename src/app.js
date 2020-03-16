@@ -1,11 +1,11 @@
-const auth = require('./auth');
 const error = require('koa-error');
 const Koa = require('koa');
 const morgan = require('koa-morgan');
 const Router = require('koa-router');
 const session = require('koa-session');
-const ts = require('./ts-api');
 const views = require('koa-views');
+const ts = require('./ts-api');
+const auth = require('./auth');
 
 const app = new Koa();
 const router = new Router();

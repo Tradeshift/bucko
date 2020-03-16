@@ -1,7 +1,7 @@
+const hash = require('object-hash');
 const api = require('./ts-api');
 const utils = require('./utils');
 const templates = require('./templates');
-const hash = require('object-hash');
 
 async function generateManifest(tunnelHost) {
 	const auth = utils.getAuth();
@@ -30,7 +30,7 @@ async function generateManifest(tunnelHost) {
 
 async function updateManifest(version, tunnelHost) {
 	const auth = utils.getAuth();
-	tunnelHost = 'https://localhost:443/'
+
 	version.app.main = tunnelHost;
 	version.app.redirect_uri = utils.buildRedirectUrl(tunnelHost);
 	version.version = `0.0.0-${hash(version)}`;
@@ -44,7 +44,6 @@ async function updateManifest(version, tunnelHost) {
 	try {
 		const appData = await api.getApp(auth, { appId, vendorId });
 		const app = templates.app({ appId, clientSecret, appUrl, oldVersion: appData.CurrentVersion });
-console.log(app)
 		await api.saveApp(auth, { app, vendorId });
 		await utils.writeManifest(version);
 		await api.releaseVersion(auth, { version });
