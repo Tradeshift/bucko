@@ -7,7 +7,7 @@ const app = require('./app');
 
 const PORT = process.env.PORT || 8443;
 
-const cert = path.resolve(__dirname, '../certs/localhost.ts.sv');
+const cert = path.resolve(__dirname, '../certs/localhost');
 
 https.createServer({
 	cert: fs.readFileSync(`${cert}.cert`),
