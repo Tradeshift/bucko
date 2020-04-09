@@ -6,29 +6,30 @@ const uuid = require('uuid/v4');
 const appendFileAsync = promisify(fs.appendFile);
 const writeFileAsync = promisify(fs.writeFile);
 
-const apiUrlToProductUrl = tsApiHost => tsApiHost.replace('api-', '').replace('/tradeshift/rest/external', '');
+const apiUrlToProductUrl = (tsApiHost) => tsApiHost.replace('api-', '').replace('/tradeshift/rest/external', '');
 
-const buildAppStoreUrl = ({ appId, tsApiHost, vendorId }) =>
-	`${apiUrlToProductUrl(tsApiHost)}/#/apps/Tradeshift.AppStore/apps/${vendorId}.${appId}`;
+const buildAppStoreUrl = ({ appId, tsApiHost, vendorId }) => `${apiUrlToProductUrl(tsApiHost)}/#/apps/Tradeshift.AppStore/apps/${vendorId}.${appId}`;
 
-const buildAppEmbedUrl = ({ appId, tsApiHost, vendorId }) =>
-	`${apiUrlToProductUrl(tsApiHost)}/#/apps/${vendorId}.${appId}`;
+const buildAppEmbedUrl = ({ appId, tsApiHost, vendorId }) => `${apiUrlToProductUrl(tsApiHost)}/#/apps/${vendorId}.${appId}`;
 
-const buildAppUrl = ({ appId, host, vendorId }) =>
-	`https://${vendorId.toLowerCase()}${appId.toLowerCase()}.${host}/`;
+const buildAppUrl = ({ appId, host, vendorId }) => `https://${vendorId.toLowerCase()}${appId.toLowerCase()}.${host}/`;
 
-const convertAppNameToId = appName => appName.replace(/\s/g, '');
+const buildRedirectUrl = (host) => `${host}auth/callback`;
+
+const convertAppNameToId = (appName) => appName.replace(/\s/g, '');
 
 const generateAppName = () => dockerNames.getRandomName()
 	.split('_')
-	.map(string => string[0].toUpperCase() + string.slice(1))
+	.map((string) => string[0].toUpperCase() + string.slice(1))
 	.join(' ');
 
-const writeManifest = async version =>
-	writeFileAsync(`${process.cwd()}/manifest.json`, JSON.stringify(version, null, 2));
+const writeManifest = async (version) => writeFileAsync(
+	`${process.cwd()}/manifest.json`, JSON.stringify(version, null, 2),
+);
 
-const writeClientSecret = async clientSecret =>
-	appendFileAsync(`${process.cwd()}/.env`, `APP_OAUTH_SECRET=${clientSecret}`);
+const writeClientSecret = async (clientSecret) => appendFileAsync(
+	`${process.cwd()}/.env`, `APP_OAUTH_SECRET=${clientSecret}`,
+);
 
 const getClientSecret = () => process.env.APP_OAUTH_SECRET;
 
@@ -51,6 +52,7 @@ module.exports = {
 	buildAppEmbedUrl,
 	buildAppStoreUrl,
 	buildAppUrl,
+	buildRedirectUrl,
 	convertAppNameToId,
 	createClientSecret,
 	generateAppName,

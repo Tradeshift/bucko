@@ -24,12 +24,12 @@ const getClient = (ctx) => {
 	});
 
 	// just pass back `data` for simplicity
-	instance.interceptors.response.use(response =>
-		(response.status === 200 ? response.data : response));
+	instance.interceptors.response.use((response) => (
+		response.status === 200 ? response.data : response));
 
 	return instance;
 };
 
-api.getAccount = async ctx => getClient(ctx).get('/account/info');
+api.getAccount = async (ctx) => getClient(ctx).get('/account/info');
 
 module.exports = api;

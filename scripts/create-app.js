@@ -1,9 +1,8 @@
 require('dotenv').config();
 
-const api = require('./helpers/ts-api');
 const chalk = require('chalk');
-const templates = require('./helpers/templates');
 const utils = require('./helpers/utils');
+const { generateManifest } = require('./helpers/manifest');
 
 const TUNNEL_DOMAIN = 'localtunnel.me';
 
@@ -21,32 +20,16 @@ const logSuccess = ({ appName, appEmbedUrl, appStoreUrl }) => {
 
 // need to wrap and call so we can use async / await
 (async function createApp() {
-	const auth = utils.getAuth();
-
-	const vendor = await api.getVendor(auth);
-	const vendorId = vendor.VendorId;
-
-	const clientSecret = utils.getClientSecret() || await utils.createClientSecret();
-
-	const appName = utils.generateAppName();
-	const appId = utils.convertAppNameToId(appName);
-	const appUrl = utils.buildAppUrl({ appId, host: TUNNEL_DOMAIN, vendorId });
-
-	const app = templates.app({ appId, clientSecret, appUrl });
-	const version = templates.appVersion({ appId, appName, appUrl, vendorId });
-
 	try {
-		await api.saveApp(auth, { app, vendorId });
-		await utils.writeManifest(version);
-		await api.releaseVersion(auth, { version });
+		const auth = utils.getAuth();
+		const { appId, appName, vendorId } = await generateManifest(TUNNEL_DOMAIN);
+		const { tsApiHost } = auth;
+		const appEmbedUrl = utils.buildAppEmbedUrl({ appId, tsApiHost, vendorId });
+		const appStoreUrl = utils.buildAppStoreUrl({ appId, tsApiHost, vendorId });
+		logSuccess({ appName, appEmbedUrl, appStoreUrl });
 	} catch (e) {
 		console.log(`${chalk.red('Oh snap!')} There was a problem creating the app.`);
 		console.log(e);
 		process.exit(1);
 	}
-
-	const { tsApiHost } = auth;
-	const appEmbedUrl = utils.buildAppEmbedUrl({ appId, tsApiHost, vendorId });
-	const appStoreUrl = utils.buildAppStoreUrl({ appId, tsApiHost, vendorId });
-	logSuccess({ appName, appEmbedUrl, appStoreUrl });
 }());

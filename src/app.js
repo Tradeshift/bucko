@@ -1,11 +1,11 @@
-const auth = require('./auth');
 const error = require('koa-error');
 const Koa = require('koa');
 const morgan = require('koa-morgan');
 const Router = require('koa-router');
 const session = require('koa-session');
-const ts = require('./ts-api');
 const views = require('koa-views');
+const ts = require('./ts-api');
+const auth = require('./auth');
 
 const app = new Koa();
 const router = new Router();
@@ -17,7 +17,7 @@ app.use(error());
 // random key used so oauth dance is performed every time
 // TODO: implement refresh token strategy and use a constant key
 app.keys = [Math.random().toString().slice(2)];
-app.use(session(app));
+app.use(session({ sameSite: 'none' }, app));
 
 // hookup middleware for authentication with Tradeshift
 app.use(auth(app));

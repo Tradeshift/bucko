@@ -42,7 +42,7 @@ const apply = (app) => {
 		done(null, jwt.decode(id, process.env.APP_OAUTH_SECRET));
 	});
 
-	const apiUrlToAuthUrl = tsApiHost => tsApiHost.replace('/tradeshift/rest/external', '/tradeshift/auth');
+	const apiUrlToAuthUrl = (tsApiHost) => tsApiHost.replace('/tradeshift/rest/external', '/tradeshift/auth');
 
 	const options = {
 		authorizationURL: `${apiUrlToAuthUrl(process.env.TS_API_HOST)}/login`,
