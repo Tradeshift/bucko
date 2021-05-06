@@ -24,7 +24,7 @@
 		"docker-names": "1.1.1",
 		"dotenv": "8.2.0",
 		"execa": "4.0.0",
-		"handlebars": "4.7.6",
+		"handlebars": "4.7.7",
 		"js-base64": "2.5.2",
 		"jwt-simple": "0.5.6",
 		"koa": "2.11.0",
