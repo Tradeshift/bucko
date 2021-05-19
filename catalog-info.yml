@@ -1,0 +1,19 @@
+# catalog-info.yml
+# This file contains metadata for backstage
+# Read more about available fields and annotations:
+#
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bucko
+  description: |
+    Friendly assistance to get started developing apps for the Tradeshift platform.
+  annotations:
+    github.com/project-slug: Tradeshift/bucko # GitHub project name
+  tags:
+    - js
+spec:
+  type: other
+  owner: partner-enablement-and-apps
+  lifecycle: production
+
