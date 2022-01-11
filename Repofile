@@ -1,0 +1,4 @@
+{
+	"maintainers": ["Partner Enablement And Apps"],
+	"checks": ["Build and test"]
+}
