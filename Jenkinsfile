@@ -4,8 +4,8 @@
 // For Github integration: https://github.com/jenkinsci/pipeline-github-plugin
 // For credentials:        https://jenkins.io/doc/book/pipeline/jenkinsfile/#handling-credentials
 // For credential IDs:     https://ci.ts.sv/credentials/store/system/domain/_/
-// Tools (JDK, Maven):     https://ci.ts.sv/configureTools/
 // Docker:                 https://jenkins.io/doc/book/pipeline/docker/
+// Custom commands:        https://github.com/Tradeshift/jenkinsfile-common/tree/master/vars
 // Environment variables:  env.VARIABLE_NAME
 
 pipeline {
@@ -14,14 +14,13 @@ pipeline {
         issueCommentTrigger('^retest$')
     }
 
-    options {
-        ansiColor('xterm')
-        timestamps()
-        // increased timeout to wait for smoketest runs
-        timeout(time: 120, unit: 'MINUTES')
-    }
-
     stages {
+        stage('Clone') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Sonarqube') {
             when {
                 anyOf {
@@ -30,9 +29,7 @@ pipeline {
                 }
             }
             steps {
-                sonarqube(extraOptions: '\
-                    -Dsonar.exclusions="output/**/*, coverage/**/*, public/v4/**/*" \
-                ')
+                sonarqube()
             }
         }
     }
