@@ -1,7 +1,7 @@
 const dockerNames = require('docker-names');
 const fs = require('fs');
 const { promisify } = require('util');
-const uuid = require('uuid/v4');
+const { v4: uuid } = require('uuid');
 
 const appendFileAsync = promisify(fs.appendFile);
 const writeFileAsync = promisify(fs.writeFile);
