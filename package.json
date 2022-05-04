@@ -33,7 +33,6 @@
 		"ngrok": "3.2.7",
 		"object-hash": "2.0.3",
 		"passport-oauth2": "1.6.1",
-		"request": "2.88.2",
 		"request-promise-native": "1.0.8",
 		"uuid": "8.3.2"
 	},
@@ -42,5 +41,10 @@
 		"eslint-config-airbnb-base": "14.1.0",
 		"eslint-plugin-import": "2.25.4",
 		"nodemon": "2.0.2"
+	},
+	"overrides": {
+		"ngrok": {
+			"jsprim": "1.4.2"
+		}
 	}
 }
