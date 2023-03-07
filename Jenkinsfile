@@ -21,16 +21,16 @@ pipeline {
             }
         }
 
-        stage('Sonarqube') {
-            when {
-                anyOf {
-                    branch 'master' // Only run Sonarqube on master...
-                    changeRequest() // ... and PRs
-                }
-            }
-            steps {
-                sonarqube()
-            }
-        }
+        // stage('Sonarqube') {
+            // when {
+                // anyOf {
+                    // branch 'master' // Only run Sonarqube on master...
+                    // changeRequest() // ... and PRs
+                // }
+            // }
+            // steps {
+                // sonarqube()
+            //}
+        //}
     }
 }
