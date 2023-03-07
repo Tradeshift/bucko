@@ -18,7 +18,7 @@
 		"chalk": "5.2.0",
 		"datauri": "2.0.0",
 		"docker-names": "1.1.1",
-		"dotenv": "8.2.0",
+		"dotenv": "16.0.3",
 		"execa": "4.0.0",
 		"handlebars": "4.7.7",
 		"js-base64": "2.5.2",
