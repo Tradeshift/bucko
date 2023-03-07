@@ -1,0 +1,13 @@
+name: rerun
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  # Trigers on comments: rerun | rerun failed
+  rerun:
+    uses: tradeshift/actions-workflow-github/.github/workflows/comment-rerun.yml@v1
+    with:
+      workflow-name: 'Sonarqube scanner'
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
