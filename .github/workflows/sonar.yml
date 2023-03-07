@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  build:
+  sonarqube:
     runs-on: ubuntu-latest
 
     steps:
