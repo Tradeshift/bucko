@@ -41,7 +41,7 @@
 		"eslint": "6.8.0",
 		"eslint-config-airbnb-base": "14.1.0",
 		"eslint-plugin-import": "2.25.4",
-		"nodemon": "2.0.21"
+		"nodemon": "2.0.22"
 	},
 	"overrides": {
 		"got": "^11.8.6"
