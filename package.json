@@ -19,7 +19,7 @@
 		"datauri": "2.0.0",
 		"docker-names": "1.2.1",
 		"dotenv": "16.0.3",
-		"execa": "4.0.0",
+		"execa": "4.1.0",
 		"handlebars": "4.7.8",
 		"js-base64": "2.5.2",
 		"jwt-simple": "0.5.6",
