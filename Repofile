@@ -1,7 +1,7 @@
 {
     "description": "Provides some friendly assistance to get started developing apps on the Tradeshift platform.",
     "maintainers": [
-        "partner-enablement-and-apps"
+        "sre"
     ],
     "checks": [
         "sonarqube"

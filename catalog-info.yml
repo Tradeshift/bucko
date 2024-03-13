@@ -14,6 +14,6 @@ metadata:
     - js
 spec:
   type: other
-  owner: partner-enablement-and-apps
+  owner: sre
   lifecycle: production
 
