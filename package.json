@@ -14,7 +14,7 @@
 		"start-tunnel-only": "node scripts/start-tunnel.js"
 	},
 	"dependencies": {
-		"axios": "1.6.7",
+		"axios": "1.6.8",
 		"chalk": "5.3.0",
 		"datauri": "4.1.0",
 		"docker-names": "1.2.1",
