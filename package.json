@@ -44,6 +44,9 @@
 		"nodemon": "3.1.11"
 	},
 	"overrides": {
-		"got": "^14.6.6"
+		"got": "^14.6.6",
+		"request": {
+			"form-data": "^2.5.5"
+		}
 	}
 }
